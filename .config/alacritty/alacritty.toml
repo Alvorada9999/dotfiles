@@ -1,0 +1,14 @@
+[window]
+decorations = "Full"
+startup_mode = "Maximized"
+
+[font]
+normal = { family = "MesloLGS NF", style = "Normal" }
+bold = { family = "MesloLGS NF", style = "Bold" }
+italic = { family = "MesloLGS NF", style = "Italic" }
+bold_italic = { family = "MesloLGS NF", style = "Bold Italic" }
+
+[keyboard]
+bindings = [
+{key = "F11", action = "ToggleFullscreen"}
+]
