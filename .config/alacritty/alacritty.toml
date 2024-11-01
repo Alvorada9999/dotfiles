@@ -12,3 +12,6 @@ bold_italic = { family = "MesloLGS NF", style = "Bold Italic" }
 bindings = [
 {key = "F11", action = "ToggleFullscreen"}
 ]
+
+[mouse]
+hide_when_typing = true
