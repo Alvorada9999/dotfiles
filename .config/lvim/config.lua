@@ -69,6 +69,22 @@ dap.adapters["pwa-node"] = {
     args = {vim.fn.expand("~") .. "/js-debug/src/dapDebugServer.js", "${port}"},
   }
 }
+local function load_env_file(path)
+  local env = {}
+  local file = io.open(path, "r")
+  if not file then return env end
+  for line in file:lines() do
+    if not line:match("^%s*#") and not line:match("^%s*$") then
+      local key, val = line:match("^%s*([%w_.-]+)%s*=%s*(.*)%s*$")
+      if key and val then
+        val = val:gsub('^["\']', ''):gsub('["\']$', '') -- strip quotes
+        env[key] = val
+      end
+    end
+  end
+  file:close()
+  return env
+end
 dap.configurations.javascript = {
   {
     name = 'Launch',
@@ -79,7 +95,11 @@ dap.configurations.javascript = {
     end,
     cwd = vim.fn.getcwd(),
     stopOnEntry = true,
-    console = "integratedTerminal"
+    console = "integratedTerminal",
+    env = function()
+      local env = load_env_file(vim.fn.getcwd() .. "/.env")
+      return env
+    end
   },
 }
 dap.configurations.typescript = {
@@ -94,7 +114,11 @@ dap.configurations.typescript = {
     stopOnEntry = true,
     sourceMaps = true,
     outFiles = { "${workspaceFolder}/dist/**/*.js", "!**/node_modules/**" },
-    console = "integratedTerminal"
+    console = "integratedTerminal",
+    env = function()
+      local env = load_env_file(vim.fn.getcwd() .. "/.env")
+      return env
+    end
   },
 }
 ------------------------------------------------------------------------------------
