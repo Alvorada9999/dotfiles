@@ -1,0 +1,47 @@
+/*
+Install the following extensions:
+vscodevim.vim - https://open-vsx.org/vscode/item?itemName=llvm-vs-code-extensions.vscode-clangd
+vadimcn.vscode-lldb - https://open-vsx.org/vscode/item?itemName=vadimcn.vscode-lldb
+llvm-vs-code-extensions.vscode-clangd - https://open-vsx.org/vscode/item?itemName=llvm-vs-code-extensions.vscode-clangd
+*/
+{
+    "extensions.experimental.affinity": {
+        "asvetliakov.vscode-neovim": 1
+    },
+    //This filepath if for a clangd installation by flatpak VSCodium, version if needed
+    //"clangd.path": "${env:HOME}/.var/app/com.vscodium.codium/config/VSCodium/User/globalStorage/llvm-vs-code-extensions.vscode-clangd/install/21.1.8/clangd_21.1.8/bin/clangd",
+    "C_Cpp.intelliSenseEngine": "disabled",
+    "vim.leader": "<space>",
+    "vim.normalModeKeyBindingsNonRecursive": [
+        //debbuger
+        { "before": ["<leader>", "d"], "commands": ["workbench.view.debug"] },
+        { "before": ["<leader>", "d", "s"], "commands": ["workbench.action.debug.start"] },
+        { "before": ["<leader>", "d", "c"], "commands": [ "workbench.action.debug.continue"] },
+        { "before": ["<leader>","d","o"], "commands": ["workbench.action.debug.stepOver"] },
+        { "before": ["<leader>","d","i"], "commands": ["workbench.action.debug.stepInto"] },
+        { "before": [ "<leader>","d", "u"], "commands": ["workbench.action.debug.stepOut"] },
+        { "before": ["<leader>","d","b"], "commands": ["editor.debug.action.toggleBreakpoint"] },
+        { "before": ["<leader>","d","d"], "commands": ["workbench.action.debug.stop"] },
+        //buffers
+        {"before": ["<leader>","b"], "commands": ["workbench.action.showAllEditors"] },
+        {"before": ["<leader>","b", "n"], "commands": ["workbench.action.nextEditor"] },
+        {"before": ["<leader>","b", "b"], "commands": ["workbench.action.previousEditor"] },
+        {"before": ["<leader>", "c"], "commands": ["workbench.action.closeActiveEditor"] },
+        {"before": ["<leader>", "b", "h"], "commands": ["workbench.action.closeEditorsToTheLeft"] },
+        {"before": ["<leader>", "b", "l"], "commands": ["workbench.action.closeEditorsToTheRight"]},
+        {"before": ["<leader>", "w"], "commands": ["workbench.action.files.save"] },
+        //navigation
+        {"before": ["<leader>","e"], "commands": ["workbench.action.toggleSidebarVisibility"] },
+        //{"before": ["<leader>","e", "e"], "commands": ["workbench.view.explorer"] },
+        {"before": ["<A-3>"], "commands": ["-workbench.action.terminal.toggleTerminal"] },
+        //file finder
+        {"before": ["<leader>","f"], "commands": ["workbench.action.quickOpen"] },
+        //searching
+        {"before": ["<leader>","s", "t"], "commands": ["workbench.action.findInFiles"] },
+        //lsp
+        {"before": ["<leader>","l", "i"], "commands": ["editor.action.marker.next"] },
+        {"before": ["<leader>","l", "j"], "commands": ["editor.action.marker.prev"] },
+        //commenting
+        {"before": ["<leader>","/"], "commands": ["editor.action.commentLine"] }
+    ]
+}
