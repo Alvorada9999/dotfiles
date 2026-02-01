@@ -39,7 +39,7 @@ llvm-vs-code-extensions.vscode-clangd - https://open-vsx.org/vscode/item?itemNam
         //searching
         {"before": ["<leader>","s", "t"], "commands": ["workbench.action.findInFiles"] },
         //lsp
-        {"before": ["<leader>","l", "i"], "commands": ["editor.action.marker.next"] },
+        {"before": ["<leader>","l", "k"], "commands": ["editor.action.marker.next"] },
         {"before": ["<leader>","l", "j"], "commands": ["editor.action.marker.prev"] },
         //commenting
         {"before": ["<leader>","/"], "commands": ["editor.action.commentLine"] }
