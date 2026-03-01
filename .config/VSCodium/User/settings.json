@@ -9,7 +9,8 @@ llvm-vs-code-extensions.vscode-clangd - https://open-vsx.org/vscode/item?itemNam
         "asvetliakov.vscode-neovim": 1
     },
     //This filepath if for flatpak install
-    "clangd.path": "${env:HOME}/.var/app/com.vscodium.codium/config/VSCodium/User/globalStorage/llvm-vs-code-extensions.vscode-clangd/install/21.1.8/clangd_21.1.8/bin/clangd",
+    // "clangd.path": "${env:HOME}/.var/app/com.vscodium.codium/config/VSCodium/User/globalStorage/llvm-vs-code-extensions.vscode-clangd/install/21.1.8/clangd_21.1.8/bin/clangd",
+    "clangd.path": "clangd",
     "C_Cpp.intelliSenseEngine": "disabled",
     "vim.useSystemClipboard": true,
     "editor.fontFamily": "'MesloLGS NF Regular'",
