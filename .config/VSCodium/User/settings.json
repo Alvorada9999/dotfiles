@@ -12,6 +12,7 @@ llvm-vs-code-extensions.vscode-clangd - https://open-vsx.org/vscode/item?itemNam
     "clangd.path": "${env:HOME}/.var/app/com.vscodium.codium/config/VSCodium/User/globalStorage/llvm-vs-code-extensions.vscode-clangd/install/21.1.8/clangd_21.1.8/bin/clangd",
     "C_Cpp.intelliSenseEngine": "disabled",
     "vim.useSystemClipboard": true,
+    "editor.fontFamily": "'MesloLGS NF Regular'",
     "vim.leader": "<space>",
     "vim.normalModeKeyBindingsNonRecursive": [
         //debbuger
@@ -32,18 +33,21 @@ llvm-vs-code-extensions.vscode-clangd - https://open-vsx.org/vscode/item?itemNam
         {"before": ["<leader>", "w"], "commands": ["workbench.action.files.save"] },
         //navigation
         {"before": ["<leader>","e"], "commands": ["workbench.action.toggleSidebarVisibility"] },
-        {"before": ["<A-3>"], "commands": ["-workbench.action.terminal.toggleTerminal"] },
         //file finder
         {"before": ["<leader>","f"], "commands": ["workbench.action.quickOpen"] },
         //searching
         {"before": ["<leader>","s", "t"], "commands": ["workbench.action.findInFiles"] },
         //lsp
-        {"before": ["<leader>","l", "k"], "commands": ["editor.action.marker.next"] },
-        {"before": ["<leader>","l", "j"], "commands": ["editor.action.marker.prev"] },
+        {"before": ["<leader>","l", "j"], "commands": ["editor.action.marker.next"] },
+        {"before": ["<leader>","l", "k"], "commands": ["editor.action.marker.prev"] },
         //commenting
         {"before": ["<leader>","/"], "commands": ["editor.action.commentLine"] },
     ],
     "vim.visualModeKeyBindings": [
         { "before": ["<leader>", "/"], "commands": ["editor.action.commentLine"], "when": "editorTextFocus && !editorReadonly" },
-    ]
+    ],
+    "window.commandCenter": false,
+    "workbench.activityBar.location": "bottom",
+    "workbench.layoutControl.enabled": false,
+    "window.customTitleBarVisibility": "windowed"
 }
