@@ -1,20 +1,45 @@
 /*
 Install the following extensions:
 vscodevim.vim - https://open-vsx.org/vscode/item?itemName=llvm-vs-code-extensions.vscode-clangd
-vadimcn.vscode-lldb - https://open-vsx.org/vscode/item?itemName=vadimcn.vscode-lldb
+
+lsp for C:
+* Uncomment required lines given plataform
 llvm-vs-code-extensions.vscode-clangd - https://open-vsx.org/vscode/item?itemName=llvm-vs-code-extensions.vscode-clangd
+
+for debbuging C, install the extension and have lldb-dap installed on your machine
+* Uncomment required lines given plataform
+llvm-vs-code-extensions.lldb-dap - https://open-vsx.org/extension/llvm-vs-code-extensions/lldb-dap
 */
 {
     "editor.tabSize": 2,
-    "extensions.experimental.affinity": {
-        "asvetliakov.vscode-neovim": 1
-    },
-    //This filepath if for flatpak install
+
+    // LSP SETUP /////////////////////////////////////
+
+    // uncomment the required one given plataform
+
+    //for linux flatpak
     // "clangd.path": "${env:HOME}/.var/app/com.vscodium.codium/config/VSCodium/User/globalStorage/llvm-vs-code-extensions.vscode-clangd/install/21.1.8/clangd_21.1.8/bin/clangd",
-    "clangd.path": "clangd",
+
+    //for linux
+    // "clangd.path": "clangd",
+
+    //for windows in the MSYS2 UCRT64 environment
+    // "clangd.path": "C:\\msys64\\ucrt64\\bin\\clangd.exe",
+
+    // LSP SETUP /////////////////////////////////////
+
+    // DAP SETUP /////////////////////////////////////
+
+    // uncomment the required one given plataform
+
+    //for windows in the MSYS2 UCRT64 environment
+    // "lldb-dap.executable-path": "C:/msys64/ucrt64/bin/lldb-dap.exe",
+    // DAP SETUP /////////////////////////////////////
+
     "C_Cpp.intelliSenseEngine": "disabled",
     "vim.useSystemClipboard": true,
     "editor.fontFamily": "'MesloLGS NF Regular'",
+
     "vim.leader": "<space>",
     "vim.normalModeKeyBindingsNonRecursive": [
         //debbuger
@@ -25,6 +50,7 @@ llvm-vs-code-extensions.vscode-clangd - https://open-vsx.org/vscode/item?itemNam
         { "before": [ "<leader>","d", "u"], "commands": ["workbench.action.debug.stepOut"] },
         { "before": ["<leader>","d","b"], "commands": ["editor.debug.action.toggleBreakpoint"] },
         { "before": ["<leader>","d","d"], "commands": ["workbench.action.debug.stop"] },
+        { "before": ["<leader>","d","p"], "commands": ["workbench.action.debug.pause"] },
         //buffers
         {"before": ["<leader>","b"], "commands": ["workbench.action.showAllEditors"] },
         {"before": ["<leader>","b", "n"], "commands": ["workbench.action.nextEditor"] },
@@ -34,7 +60,7 @@ llvm-vs-code-extensions.vscode-clangd - https://open-vsx.org/vscode/item?itemNam
         {"before": ["<leader>", "b", "l"], "commands": ["workbench.action.closeEditorsToTheRight"]},
         {"before": ["<leader>", "w"], "commands": ["workbench.action.files.save"] },
         //navigation
-        {"before": ["<leader>","e"], "commands": ["workbench.action.toggleSidebarVisibility"] },
+        {"before": ["<leader>","e"],  "commands": ["workbench.action.toggleSidebarVisibility"] },
         //file finder
         {"before": ["<leader>","f"], "commands": ["workbench.action.quickOpen"] },
         //searching
@@ -49,9 +75,51 @@ llvm-vs-code-extensions.vscode-clangd - https://open-vsx.org/vscode/item?itemNam
     "vim.visualModeKeyBindings": [
         { "before": ["<leader>", "/"], "commands": ["editor.action.commentLine"], "when": "editorTextFocus && !editorReadonly" },
     ],
+
+    // UI SETUP ////////////////////////////////////////
+    //updates the default layout
     "window.commandCenter": false,
     "workbench.activityBar.location": "bottom",
     "workbench.layoutControl.enabled": false,
     "window.customTitleBarVisibility": "windowed",
-    "[c]": { "editor.defaultFormatter": "llvm-vs-code-extensions.vscode-clangd" }
+    //highlights vim searchs made by "/"
+    "vim.hlsearch": true,
+    "vim.searchHighlightColor": "#fffa65",
+    "vim.searchHighlightTextColor": "#000000",
+    //removes default background when hovering text
+    "workbench.colorCustomizations": {
+        "editor.hoverHighlightBackground": "#00000000",
+        "editor.wordHighlightBackground": "#00000000",
+        "editor.wordHighlightStrongBackground": "#00000000"
+    },
+    // UI SETUP ////////////////////////////////////////
+
+    "[c]": { "editor.defaultFormatter": "llvm-vs-code-extensions.vscode-clangd" },
+    "terminal.integrated.profiles.windows": {
+        "PowerShell": {
+            "source": "PowerShell",
+            "icon": "terminal-powershell",
+            "path": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe"
+        },
+        "Command Prompt": {
+            "path": [
+                "${env:windir}\\Sysnative\\cmd.exe",
+                "${env:windir}\\System32\\cmd.exe"
+            ],
+            "args": [],
+            "icon": "terminal-cmd"
+        },
+        "Git Bash": {
+            "source": "Git Bash",
+            "icon": "terminal-git-bash"
+        },
+        "MSYS2 UCRT": {
+            "path": "C:\\Windows\\system32\\cmd.exe",
+            "args": [
+                "/c",
+                "C:\\msys64\\msys2_shell.cmd -defterm -here -no-start -ucrt64"
+            ]
+        }
+    },
+    "terminal.integrated.defaultProfile.windows": "MSYS2 UCRT"
 }
