@@ -20,3 +20,18 @@ vim.lsp.config['clangd'] = {
 	},
 }
 vim.lsp.enable('clangd')
+
+vim.lsp.config['lua-language-server'] = {
+	capabilities = capabilities,
+	cmd = { "lua-language-server" }, -- or full path: "/usr/bin/clangd"
+	filetypes = { "lua" },
+	-- root_markers = { { 'compile_flags.txt', 'compile_commands.json' }, '.git' },
+	-- init_options = {
+	-- 	clangdFileStatus = true,
+	-- 	completeUnimported = true,
+	-- },
+	handlers = {
+		-- optional: customize hover/diagnostics handlers
+	},
+}
+vim.lsp.enable('lua-language-server')

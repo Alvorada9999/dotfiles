@@ -73,3 +73,14 @@ vim.keymap.set('n', '<leader>f', builtin.find_files, { desc = 'Telescope find fi
 vim.keymap.set('n', '<leader>st', builtin.live_grep, { desc = 'Telescope live grep' })
 vim.keymap.set('n', '<leader>sb', builtin.buffers, { desc = 'Telescope buffers' })
 vim.keymap.set('n', '<leader>sh', builtin.help_tags, { desc = 'Telescope help tags' })
+--
+
+-- file explorer
+-- needs plugin "nvim-tree/nvim-tree"
+vim.keymap.set("n", "<leader>e", function() require("nvim-tree.api").tree.toggle({
+    -- path = "<args>",
+    find_file = true,
+    update_root = true,
+    focus = true,
+  }) end)
+--
