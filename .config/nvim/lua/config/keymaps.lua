@@ -1,4 +1,7 @@
 local map = vim.keymap.set
+
+vim.g.mapleader = ' '
+
 map('n', '<leader>e', ':NvimTreeToggle<CR>', { desc = 'Toggle file tree', silent = true })
 
 -- Buffers
@@ -34,6 +37,23 @@ vim.keymap.set("n", "<leader>du", function() dap.step_out() end, { desc = 'Step 
 vim.keymap.set("n", "<leader>db", function() dap.toggle_breakpoint() end, { desc = 'Toggle breakpoint', remap = true, silent = true })
 vim.keymap.set("n", "<leader>dd", function() dap.terminate() end, { desc = 'Stop', remap = true, silent = true })
 vim.keymap.set("n", "<leader>dp", function() dap.pause() end, { desc = 'Pause', remap = true, silent = true })
+-- needs plugin "rcarriga/nvim-dap-ui"
+local dapUi = require("dapui")
+vim.keymap.set("n", "<leader>dU", function()
+  local dap = package.loaded["dap"]
+
+  -- Check if a session is actively running
+  local has_session = dap and dap.session() ~= nil
+
+  if has_session then
+    -- If a session exists, toggle normally
+    dapUi.toggle({ reset = true })
+  else
+    -- If NO session exists, unconditionally close the UI to clean up the screen
+    dapUi.close()
+    vim.notify("No active DAP session. Closed DAP UI.", vim.log.levels.INFO)
+  end
+end, { desc = 'Toggle UI', remap = true, silent = true })
 --
 
 -- Terminals
@@ -77,10 +97,12 @@ vim.keymap.set('n', '<leader>sh', builtin.help_tags, { desc = 'Telescope help ta
 
 -- file explorer
 -- needs plugin "nvim-tree/nvim-tree"
-vim.keymap.set("n", "<leader>e", function() require("nvim-tree.api").tree.toggle({
+vim.keymap.set("n", "<leader>e", function()
+  require("nvim-tree.api").tree.toggle({
     -- path = "<args>",
     find_file = true,
     update_root = true,
     focus = true,
-  }) end)
+  }) end
+)
 --

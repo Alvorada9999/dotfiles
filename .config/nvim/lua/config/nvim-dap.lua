@@ -187,13 +187,3 @@ dap.configurations.python = {
     end;
   },
 }
-
--- lvim.builtin.which_key.mappings["d"]["h"] = {
---   function() require("dap.ui.widgets").hover() end,
---   "Hover All Variables",
--- }
---
--- lvim.builtin.which_key.mappings["d"]["H"] = {
---   function() local widgets=require('dap.ui.widgets');widgets.centered_float(widgets.scopes) end,
---   "Hover Variable",
--- }
