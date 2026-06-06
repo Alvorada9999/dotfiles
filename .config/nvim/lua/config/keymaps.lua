@@ -2,7 +2,7 @@ local map = vim.keymap.set
 
 vim.g.mapleader = ' '
 
-map('n', '<leader>e', ':NvimTreeToggle<CR>', { desc = 'Toggle file tree', silent = true })
+map('n', '<leader>h', ':noh<CR>', { desc = 'Remove search results from "/"', silent = true })
 
 -- Buffers
 map('n', '<leader>c', ':bd<CR>', { desc = 'Close buffer', silent = true })
@@ -37,6 +37,8 @@ vim.keymap.set("n", "<leader>du", function() dap.step_out() end, { desc = 'Step 
 vim.keymap.set("n", "<leader>db", function() dap.toggle_breakpoint() end, { desc = 'Toggle breakpoint', remap = true, silent = true })
 vim.keymap.set("n", "<leader>dd", function() dap.terminate() end, { desc = 'Stop', remap = true, silent = true })
 vim.keymap.set("n", "<leader>dp", function() dap.pause() end, { desc = 'Pause', remap = true, silent = true })
+vim.keymap.set("n", "<leader>dh", function() require("dap.ui.widgets").hover() end, { desc = 'Hover variable', remap = true, silent = true })
+vim.keymap.set("n", "<leader>dH", function() local widgets=require('dap.ui.widgets');widgets.centered_float(widgets.scopes) end, { desc = 'Hover all variables', remap = true, silent = true })
 -- needs plugin "rcarriga/nvim-dap-ui"
 local dapUi = require("dapui")
 vim.keymap.set("n", "<leader>dU", function()
