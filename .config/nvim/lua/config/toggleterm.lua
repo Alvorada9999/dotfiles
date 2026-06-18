@@ -6,3 +6,26 @@ require("toggleterm").setup{
 		enabled = false
 	}
 }
+local Terminal  = require('toggleterm.terminal').Terminal
+local lazygit = Terminal:new({
+  cmd = "lazygit",
+  dir = "git_dir",
+  direction = "float",
+  float_opts = {
+    -- Fill the available screen dimensions
+    width = vim.o.columns,
+    height = vim.o.lines
+  },
+  -- function to run on opening the terminal
+  on_open = function(term)
+    vim.cmd("startinsert!")
+    vim.api.nvim_buf_set_keymap(term.bufnr, "n", "q", "<cmd>close<CR>", {noremap = true, silent = true})
+  end,
+  -- function to run on closing the terminal
+  on_close = function(term)
+    vim.cmd("startinsert!")
+  end,
+})
+function _lazygit_toggle()
+  lazygit:toggle()
+end

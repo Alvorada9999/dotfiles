@@ -60,9 +60,14 @@ end, { desc = 'Toggle UI', remap = true, silent = true })
 
 -- Terminals
 -- needs plugin "akinsho/toggleterm"
+
+-- for oppening terminal at bottom
 require("toggleterm").setup{
 	open_mapping = [[<M-3>]]
 }
+
+-- for opening lazygit
+vim.api.nvim_set_keymap("n", "<leader>gg", "<cmd>lua _lazygit_toggle()<CR>", {noremap = true, silent = true})
 --
 
 -- lsp
@@ -89,7 +94,7 @@ cmp.setup({
 })
 --
 
--- searching
+-- searching needs plugin "nvim-telescope/telescope.nvim"
 local builtin = require('telescope.builtin')
 vim.keymap.set('n', '<leader>f', builtin.find_files, { desc = 'Telescope find files' })
 vim.keymap.set('n', '<leader>st', builtin.live_grep, { desc = 'Telescope live grep' })
