@@ -100,21 +100,6 @@ dap.configurations.javascript = {
       local env = load_env_file(vim.fn.getcwd() .. "/.env")
       return env
     end
-  },
-  {
-    name = "Select and attach to process",
-    type = "pwa-node",
-    request = "attach",
-    processId = function()
-       return tonumber(vim.fn.input('Pid: '))
-    end,
-    cwd = '${workspaceFolder}',
-    stopOnEntry = true,
-    console = "integratedTerminal",
-    env = function()
-      local env = load_env_file(vim.fn.getcwd() .. "/.env")
-      return env
-    end
   }
 }
 dap.configurations.typescript = {
@@ -136,17 +121,21 @@ dap.configurations.typescript = {
     end
   },
   {
-    name = "Select and attach to process",
+    name = "Attach",
     type = "pwa-node",
     request = "attach",
-    processId = function()
-       return tonumber(vim.fn.input('Pid: '))
+    port = function()
+      return vim.fn.input('Select port: ')
     end,
+    cwd = '${workspaceFolder}',
     stopOnEntry = true,
     sourceMaps = true,
-    outFiles = { "${workspaceFolder}/dist/**/*.js", "!**/node_modules/**" },
-    cwd = '${workspaceFolder}',
+    outFiles = { "${workspaceFolder}/**/dist/**/*.js", "!**/node_modules/**" },
     console = "integratedTerminal",
+    env = function()
+      local env = load_env_file(vim.fn.getcwd() .. "/.env")
+      return env
+    end
   }
 }
 ------------------------------------------------------------------------------------
