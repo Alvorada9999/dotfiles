@@ -113,7 +113,7 @@ dap.configurations.typescript = {
     cwd = vim.fn.getcwd(),
     stopOnEntry = true,
     sourceMaps = true,
-    outFiles = { "${workspaceFolder}/dist/**/*.js", "!**/node_modules/**" },
+    outFiles = { "${workspaceFolder}/**/dist/**/*.js", "!**/node_modules/**" },
     console = "integratedTerminal",
     env = function()
       local env = load_env_file(vim.fn.getcwd() .. "/.env")
@@ -124,6 +124,12 @@ dap.configurations.typescript = {
     name = "Attach",
     type = "pwa-node",
     request = "attach",
+    -- Start node as:
+    -- node --inspect=9229 --watch <source_file>
+    -- Or using tsx (npm install -D tsx):
+    -- node --inspect=9229 --import tsx --watch <source_file>
+    -- If using nestjs:
+    -- nest start --debug 9229 --watch
     port = function()
       return vim.fn.input('Select port: ')
     end,
