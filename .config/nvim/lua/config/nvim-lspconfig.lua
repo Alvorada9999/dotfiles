@@ -7,7 +7,13 @@
 
 -- show all diagnostics (errors, warnings, info, hints)
 vim.diagnostic.config({
-  virtual_text = true, -- inline text
+  -- Turn off the cut-off inline text at the end of the line
+  virtual_text = false,
+  virtual_lines = {
+    -- Optional: Only show the error for the line your cursor is currently on
+    -- Set to false if you want to see all errors in the file simultaneously
+    current_line = true
+  },
   signs = {
     text = {
       [vim.diagnostic.severity.ERROR] = "",
@@ -16,9 +22,7 @@ vim.diagnostic.config({
       [vim.diagnostic.severity.HINT] = "",
     }
   },
-  -- underline = true,          -- underline text
-  -- update_in_insert = false,  -- don't update while typing (optional)
-  severity_sort = true,      -- sort by severity when multiple diagnostics on a line
+  severity_sort = true  -- sort by severity when multiple diagnostics on a line
 })
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()

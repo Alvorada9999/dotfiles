@@ -81,6 +81,7 @@ vim.keymap.set("n", "<leader>lf", function() vim.lsp.buf.format({ async = true }
 vim.keymap.set("n", "<leader>lj", function() vim.diagnostic.goto_next({ float = false })  end, opts)
 -- Previous diagnostic (error/warning/info/hint)
 vim.keymap.set("n", "<leader>lk", function() vim.diagnostic.goto_prev({ float = false })  end, opts)
+vim.keymap.set('n', '<leader>ld', vim.diagnostic.open_float, { desc = 'Open floating diagnostic' })
 --
 
 -- autocomplete needs plugin "hrsh7th/nvim-cmp"
