@@ -19,7 +19,7 @@ local cCPPConfigs = {
     args = function()
       local input = vim.fn.input('Program arguments: ')
       return vim.fn.split(input, " ", true)
-    end,
+    end
   },
   {
     name = "Select and attach to process",
@@ -38,7 +38,7 @@ local cCPPConfigs = {
        return tonumber(vim.fn.input('Pid: '))
     end,
     cwd = '${workspaceFolder}',
-    console = "integratedTerminal",
+    console = "integratedTerminal"
   },
 }
 dap.configurations.c = cCPPConfigs;

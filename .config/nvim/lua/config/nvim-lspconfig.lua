@@ -40,7 +40,7 @@ vim.lsp.enable('ts_ls')
 
 -- install https://github.com/supabase-community/postgres-language-server
 -- npm install -g @postgres-language-server/cli
--- postgres-language-server init
+-- postgres-language-server init to create "postgres-language-server.jsonc"
 -- DO NOT update the "$schema" field
 -- update the credentials at "db": {}
 vim.lsp.enable('postgres_lsp')
