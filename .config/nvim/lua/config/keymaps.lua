@@ -82,6 +82,9 @@ vim.keymap.set("n", "<leader>lj", function() vim.diagnostic.goto_next({ float = 
 -- Previous diagnostic (error/warning/info/hint)
 vim.keymap.set("n", "<leader>lk", function() vim.diagnostic.goto_prev({ float = false })  end, opts)
 vim.keymap.set('n', '<leader>ld', vim.diagnostic.open_float, { desc = 'Open floating diagnostic' })
+-- Triggers neovim native omni-completion using Ctrl + Space in Insert mode
+-- https://neovim.io/doc/user/insert/#omnicompletion
+vim.keymap.set('i', '<C-space>', '<C-x><C-o>', { desc = "Trigger LSP completion", remap = true, silent = true })
 --
 
 -- autocomplete needs plugin "hrsh7th/nvim-cmp"
