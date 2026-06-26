@@ -48,3 +48,6 @@ vim.lsp.enable('ts_ls')
 -- DO NOT update the "$schema" field
 -- update the credentials at "db": {}
 vim.lsp.enable('postgres_lsp')
+
+-- npm install -g @prisma/language-server
+vim.lsp.enable('prismals')

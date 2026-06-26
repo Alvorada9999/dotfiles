@@ -16,3 +16,4 @@ require('config.toggleterm')
 require('config.nvim-tree')
 
 require('config.keymaps')
+require('config.conform')
