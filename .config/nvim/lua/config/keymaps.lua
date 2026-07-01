@@ -123,3 +123,8 @@ local gitsigns = require('gitsigns')
 vim.keymap.set("n", "<leader>gj", function() gitsigns.nav_hunk('next') end, { desc = 'Next git hunk', remap = true, silent = true })
 vim.keymap.set("n", "<leader>gk", function() gitsigns.nav_hunk('prev') end, { desc = 'Previous git hunk', remap = true, silent = true })
 -- git
+
+-- editor
+-- Toggle word wrap in Normal mode
+vim.keymap.set('n', '<leader>k', function() vim.wo.wrap = not vim.wo.wrap end, { desc = 'Toggle Word Wrap' })
+--
