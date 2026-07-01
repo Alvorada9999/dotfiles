@@ -116,3 +116,10 @@ vim.keymap.set("n", "<leader>e", function()
   }) end
 )
 --
+
+-- git
+-- needs plugin "lewis6991/gitsigns.nvim"
+local gitsigns = require('gitsigns')
+vim.keymap.set("n", "<leader>gj", function() gitsigns.nav_hunk('next') end, { desc = 'Next git hunk', remap = true, silent = true })
+vim.keymap.set("n", "<leader>gk", function() gitsigns.nav_hunk('prev') end, { desc = 'Previous git hunk', remap = true, silent = true })
+-- git
